@@ -26,7 +26,6 @@ function assessInput(input1, input2){
       break;
 
     case 'movie-this':
-      console.log(input1)
       if (input2 != ""){
         var movie = input2
       } else{
@@ -36,7 +35,6 @@ function assessInput(input1, input2){
       break;
 
     case 'spotify-this-song':
-      console.log(input1)
       if (input2 != ""){
         var song = input2
       } else{
@@ -72,18 +70,21 @@ function spotifyResult(song) {
 
 //MOVIE FUNCTION
 function movieResult(movie) {
-  console.log(movie)
   request('http://www.omdbapi.com/?i=tt3896198&apikey=2306be69&t='+movie, function (error, response, body) {
     // body to JSON
-  var result = JSON.parse(body)
-  console.log('Title: '+ result.Title);
-  console.log('Released: '+ result.Released);
-  console.log('IMDB Rating: '+ result.Ratings[0].Value);
-  console.log('Rotten Tomaotes Rating: '+ result.Ratings[1].Value);
-  console.log('Country: '+ result.Country);
-  console.log('Language: '+ result.Language);
-  console.log('Plot: '+ result.Plot);
-  console.log('Actors: '+ result.Actors);
+    var result = JSON.parse(body)
+    if(result.Title != undefined){
+    console.log('Title: '+ result.Title);
+    console.log('Released: '+ result.Released);
+    console.log('IMDB Rating: '+ result.Ratings[0].Value);
+    console.log('Rotten Tomaotes Rating: '+ result.Ratings[1].Value);
+    console.log('Country: '+ result.Country);
+    console.log('Language: '+ result.Language);
+    console.log('Plot: '+ result.Plot);
+    console.log('Actors: '+ result.Actors);
+  }else{
+    console.log("invalid movie")
+  }
 });
 }
 

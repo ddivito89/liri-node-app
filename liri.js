@@ -108,7 +108,6 @@ function whatItSays() {
     var dataArr = data.split(",");
     assessInput(dataArr[0], dataArr[1])
   });
-
 }
 
 assessInput(input1, input2)
